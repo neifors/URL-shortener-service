@@ -12,18 +12,14 @@ def home(request):
       form = NewShortUrlForm(request.POST)
       if form.is_valid():
          url = form.cleaned_data.get("original")
-         print(f"url from form: {url}")
          result = Equivalent.objects.filter(original = url)
-         print(f"result: {result}")
          if result:
-            # redirect to the original
-            return redirect('maker-redirect', alias=result.alias)
+            # redirect to the original url
+            return redirect('maker-redirect', alias=result[0].alias)
          else:
-            # create alias
+            # create alias, save into db and display the new short url
             alias = ''.join(random.SystemRandom().choice(string.ascii_letters + string.digits) for _ in range(10))
-            print(f"alias: {alias}")
             result = Equivalent.objects.create(alias=alias, original=url)
-            print(f"created object: {result}")
             data = {'result': result,
                     'form' : NewShortUrlForm()}
             return render(request, 'maker/home.html', data)
@@ -33,7 +29,6 @@ def home(request):
       return render(request, 'maker/home.html', data)
 
 
-def redirect(request, alias):
+def redirect_to_original(request, alias):
    result = Equivalent.objects.filter(alias=alias)
-   print("This result is inside redirect view")
-   return redirect(result)
+   return redirect(result[0].original)
