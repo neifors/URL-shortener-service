@@ -13,15 +13,15 @@
          <input id="submit-bttn" type="submit" value="Get short URL">
       </form>
   
-      {% if result_not_exist  %}
+      {% if result_not_exists  %}
 
-      <p>New short URL: <a id="url-result" target='_blank'  href= 'http://localhost:8000/{{result_not_exist.alias}}'>http://localhost:8000/{{result_not_exist.alias}}</a></p>
+      <p>New short URL: <a id="url-result" target='_blank'  href= 'http://localhost:8000/{{result_not_exists.alias}}'>http://localhost:8000/{{result_not_exists.alias}}</a></p>
       <button id="copy-url-btn" onclick=copyURL()>Copy URL</button>
             
 
-      {% elif result_exist %}
+      {% elif result_exists %}
 
-      <p>We alredy have it: <a id="url-result" target='_blank'  href= 'http://localhost:8000/{{result_exist.alias}}'>http://localhost:8000/{{result_exist.alias}}</a></p>
+      <p>We alredy have it: <a id="url-result" target='_blank'  href= 'http://localhost:8000/{{result_exists.alias}}'>http://localhost:8000/{{result_exists.alias}}</a></p>
       <button id="copy-url-btn" onclick=copyURL()>Copy URL</button>
       
       {% endif %}
