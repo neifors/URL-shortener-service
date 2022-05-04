@@ -17,8 +17,9 @@ def home(request):
          # if already exists
          if result:
             # render the homepage sending the result and the form again because we always want the form to be displayed
-            data = {'result': result[0],
+            data = {'result_exists': result[0],
                     'form' : NewShortUrlForm()}
+            # ************** case 1 **************
             return render(request, 'maker/home.html', data)
          # if that url isn't in our db yet
          else:
@@ -26,18 +27,21 @@ def home(request):
             exists = True
             while exists:
                alias = ''.join(random.SystemRandom().choice(string.ascii_letters + string.digits) for _ in range(5))
+               # if new alias is not equal with any other alias from db
                if not Equivalent.objects.filter(alias=alias):
                   exists = False
             # create new instance (save it into the db)
             result = Equivalent.objects.create(alias=alias, original=url)
             # render the homepage sending the result and the form
-            data = {'result': result,
+            data = {'result_not_exists': result,
                     'form' : NewShortUrlForm()}
+            # ************** case 2 **************                   
             return render(request, 'maker/home.html', data)
    #if the user didn't submit the form
    else:
       #render the homepage with the form
       data = {'form': NewShortUrlForm()}
+      # ************** case 3 **************
       return render(request, 'maker/home.html', data)
 
 
