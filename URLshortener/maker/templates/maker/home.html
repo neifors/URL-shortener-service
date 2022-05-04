@@ -10,11 +10,11 @@
       <form method="POST" id="url-to-change">
          {% csrf_token %}
          {{ form.as_p }}
-         <input type="submit" value="Get short url">
+         <input id="submit-bttn" type="submit" value="Get short url">
       </form>
   
       {% if result %}
-      <p>New short URL: <span id="url-resutl">http://localhost:8000/sh/{{result.alias}}</span></p>
+      <p>New short URL: <a href="{{result.original}}" id="url-resutl">http://localhost:8000/{{result.alias}}</a></p>
       {% endif %}
    </div>
 
