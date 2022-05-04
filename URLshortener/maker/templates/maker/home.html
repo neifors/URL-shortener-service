@@ -3,13 +3,15 @@
 {% block content %}
 
    <form method="POST" id="url-to-change">
-      <label for="url-input">Your URL: </label>
-      <input type="text" name="url-input" id="url-input">
+      {% csrf_token %}
+      {{ form.as_p }}
       <input type="submit" value="Get short url">
    </form>
 
    <div>
-      <p>Here you will see the result: <span id="url-resutl"></span></p>
+      {% if result %}
+      <p>New short URL: <span id="url-resutl">http://localhost/{{result.alias}}</span></p>
+      {% endif %}
    </div>
 
 {% endblock %}
