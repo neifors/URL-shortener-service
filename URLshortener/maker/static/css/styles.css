@@ -32,4 +32,24 @@ div.wrapper p{
    font-weight: bold;
 }
 
+/* input of the form */
+div.wrapper #id_original{
+   width: 500px;
+   height: 20px;
+   padding-top: 2%;
+}
 
+/* css for the two buttons */
+div.wrapper #submit-bttn, #copy-url-btn{
+   width: 100px;
+   height: 30px;
+   background-color: rgb(202, 188, 188);
+   
+}
+
+div.wrapper #submit-bttn:hover, #copy-url-btn:hover{
+   width: 100px;
+   height: 30px;
+   background-color: rgb(133, 127, 127);
+   cursor: pointer;
+}
