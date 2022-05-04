@@ -10,14 +10,14 @@ div.wrapper {
    flex-direction: column;
    justify-content: center;
    align-items: center;
-   margin: 100px;
+   margin: 70px;
 }
 
 div.wrapper form#url-to-change {
    display: flex;
    flex-direction: column;
    align-items: center;
-   margin:100px;
+   margin:50px;
 }
 
 
