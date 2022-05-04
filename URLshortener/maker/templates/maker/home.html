@@ -1,0 +1,15 @@
+{% extends 'maker/layout.html' %}
+
+{% block content %}
+
+   <form method="POST" id="url-to-change">
+      <label for="url-input">Your URL: </label>
+      <input type="text" name="url-input" id="url-input">
+      <input type="submit" value="Get short url">
+   </form>
+
+   <div>
+      <p>Here you will see the result: <span id="url-resutl"></span></p>
+   </div>
+
+{% endblock %}
