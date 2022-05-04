@@ -14,7 +14,8 @@
       </form>
   
       {% if result %}
-      <p>New short URL: <span id="url-resutl">http://localhost:8000/sh/{{result.alias}}</span></p>
+      {% comment %} <p>New short URL: <a href=""><span id="url-resutl">http://localhost:8000/sh/{{result.alias}}</span></p> {% endcomment %}
+      <p>New short URL: <a id="url-resutl" target='_blank'  href= 'http://localhost:8000/sh/{{result.alias}}'>http://localhost:8000/sh/{{result.alias}}</a></p>
       {% endif %}
    </div>
 
