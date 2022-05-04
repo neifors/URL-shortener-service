@@ -4,6 +4,8 @@ from .forms import NewShortUrlForm
 import random
 import string
 
+# import requests # in order to validate the given URL by the user
+
 
 def home(request):
    # if user submit the form
@@ -14,6 +16,17 @@ def home(request):
          # check if that url already has a short alias into our database
          url = form.cleaned_data.get("original")
          result = Equivalent.objects.filter(original = url)
+
+         '''
+         # check if the given url exists on the internet
+         response = requests.get(url)
+         try:
+            if response.status_code == 200:
+               print("URL exists")
+         except Exception:
+            pass
+         '''          
+
          # if already exists
          if result:
             # render the homepage sending the result and the form again because we always want the form to be displayed
