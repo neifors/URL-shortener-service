@@ -1,0 +1,33 @@
+body{
+   text-align: center;
+   background-image: url('https://www.inventorsdigest.com/wp-content/uploads/2018/01/lazy-sloth.gif');
+   background-repeat: no-repeat;
+   background-size:cover;
+}
+
+div.wrapper {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin: 100px;
+}
+
+div.wrapper form#url-to-change {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin:100px;
+}
+
+
+div.wrapper h1{
+   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   font-size: 50px;
+}
+
+div.wrapper p{
+   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   font-size: 30px;
+   font-weight: bold;
+}

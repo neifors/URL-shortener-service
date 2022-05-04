@@ -2,15 +2,19 @@
 
 {% block content %}
 
-   <form method="POST" id="url-to-change">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" value="Get short url">
-   </form>
 
-   <div>
+   <div class="wrapper">
+
+      <h1>Are you too lazy to type long URLs?<br> Get a short one here:</h1>
+
+      <form method="POST" id="url-to-change">
+         {% csrf_token %}
+         {{ form.as_p }}
+         <input type="submit" value="Get short url">
+      </form>
+  
       {% if result %}
-      <p>New short URL: <span id="url-resutl">http://localhost/{{result.alias}}</span></p>
+      <p>New short URL: <span id="url-resutl">http://localhost:8000/sh/{{result.alias}}</span></p>
       {% endif %}
    </div>
 

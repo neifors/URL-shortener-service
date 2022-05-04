@@ -14,10 +14,11 @@ def home(request):
          url = form.cleaned_data.get("original")
          result = Equivalent.objects.filter(original = url)
          if result:
-            # redirect to the original url
-            return redirect('maker-redirect', alias=result[0].alias)
+            data = {'result': result[0],
+                    'form' : NewShortUrlForm()}
+            return render(request, 'maker/home.html', data)
          else:
-            # create alias, save into db and display the new short url
+            # create alias of 10 random characteres, save into db and display the new short url
             alias = ''.join(random.SystemRandom().choice(string.ascii_letters + string.digits) for _ in range(10))
             result = Equivalent.objects.create(alias=alias, original=url)
             data = {'result': result,
@@ -31,4 +32,5 @@ def home(request):
 
 def redirect_to_original(request, alias):
    result = Equivalent.objects.filter(alias=alias)
+   print(result)
    return redirect(result[0].original)

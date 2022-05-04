@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
    path('', views.home, name='maker-home'),
-   path('<str:alias>/', views.redirect_to_original, name='maker-redirect')
+   path('sh/<str:alias>/', views.redirect_to_original, name='maker-redirect')
 ]
