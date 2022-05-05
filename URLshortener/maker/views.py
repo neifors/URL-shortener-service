@@ -44,3 +44,11 @@ def home(request):
 def redirect_to_original(request, alias):
    result = Equivalent.objects.filter(alias=alias)
    return redirect(result[0].original)
+
+
+def not_found_404(request, exception):
+    data = { 'err': exception }
+    return render(request, 'maker/404.html', data)
+
+def server_error_500(request):
+    return render(request, 'maker/500.html')
